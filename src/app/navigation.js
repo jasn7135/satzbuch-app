@@ -89,7 +89,7 @@ export function updateTabBar() {
 export function renderTab(tab, { isEntering = false } = {}) {
   if (tab === "home") renderHome({ animateGreeting: isEntering });
   if (tab === "nutrition") renderNutrition();
-  if (tab === "stats") renderStats({ isEntering });
+  if (tab === "stats") renderStats();
   if (tab === "profile") renderProfile();
 }
 

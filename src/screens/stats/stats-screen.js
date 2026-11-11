@@ -1,6 +1,5 @@
 import { statsView } from "../../app/dom.js";
 import { state } from "../../app/state.js";
-import { bodyViewer } from "./body-model-card.js";
 import { renderBodyPanel, renderBodyStats } from "./body-stats.js";
 import { renderNutritionPanel, renderNutritionStats } from "./nutrition-stats.js";
 import { renderForecastCard } from "./strength-forecast-card.js";
@@ -49,9 +48,6 @@ export function buildStatsView() {
     weightForecastCard: "weight-forecast-card",
     bodyValuesCard: "body-values-card",
     weighInList: "weigh-in-list",
-    bodyStage: "body-stage",
-    bodyCanvas: "body-canvas",
-    bodyStageHint: "body-stage-hint",
     bodyFatPanel: "body-fat-panel",
     weeklyMuscleCard: "weekly-muscle-card",
   }));
@@ -70,16 +66,15 @@ function updateSegmentedControl() {
   for (const [segmentId, panel] of Object.entries(statsElements.panels)) panel.hidden = segmentId !== state.statsSegment;
 }
 
-export function renderStats({ isEntering = false } = {}) {
+export function renderStats() {
   updateSegmentedControl();
   STATS_RENDERERS[state.statsSegment]();
-  if (isEntering && state.statsSegment === "body") bodyViewer?.playIntro();
 }
 
 export function selectStatsSegment(segmentId) {
   if (!STATS_RENDERERS[segmentId] || segmentId === state.statsSegment) return;
   state.statsSegment = segmentId;
-  renderStats({ isEntering: true });
+  renderStats();
   playAnimation(statsElements.lens, "lens-moving");
   playAnimation(statsElements.panels[segmentId], "fade-in");
 }

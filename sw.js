@@ -1,4 +1,4 @@
-const CACHE_NAME = "satzbuch-2026-11-11-exercises";
+const CACHE_NAME = "satzbuch-2026-11-11-no-3d";
 const APP_FILES = [
   "./",
   "./assets/icons/apple-touch-icon.png",
@@ -43,7 +43,6 @@ const APP_FILES = [
   "./src/screens/profile/profile-photo.js",
   "./src/screens/profile/profile-screen.js",
   "./src/screens/stats/body-fat-panel.js",
-  "./src/screens/stats/body-model-card.js",
   "./src/screens/stats/body-stats.js",
   "./src/screens/stats/nutrition-stats.js",
   "./src/screens/stats/records-card.js",
@@ -62,14 +61,6 @@ const APP_FILES = [
   "./src/svg/icons.js",
   "./src/svg/muscle-regions.js",
   "./src/ui/animation.js",
-  "./src/ui/body-viewer/body-shell.js",
-  "./src/ui/body-viewer/gpu.js",
-  "./src/ui/body-viewer/mesh-builder.js",
-  "./src/ui/body-viewer/palette.js",
-  "./src/ui/body-viewer/skeleton.js",
-  "./src/ui/body-viewer/symmetry.js",
-  "./src/ui/body-viewer/vector-math.js",
-  "./src/ui/body-viewer/viewer.js",
   "./src/ui/charts.js",
   "./src/ui/components.js",
   "./src/ui/forms.js",

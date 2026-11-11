@@ -83,7 +83,7 @@ const ONBOARDING_TEMPLATES = {
         ${renderFeature(ICONS.calendar, "Plan für jeden Wochentag", "Übungen wählst du aus einer Liste, samt Muskelkarte.", 0)}
         ${renderFeature(ICONS.repeat, "Werte vom letzten Mal", "Gewicht und Wiederholungen sind vorausgefüllt. Du änderst nur, was anders ist.", 1)}
         ${renderFeature(ICONS.nutrition, "Mahlzeiten und Makros", "Trag ein, was du isst. Vorschläge rechnen Kalorien und Makros mit.", 2)}
-        ${renderFeature(ICONS.chart, "Fortschritt im Blick", "Statistik, Prognose und 3D-Körpermodell zeigen deine Entwicklung.", 3)}
+        ${renderFeature(ICONS.chart, "Fortschritt im Blick", "Statistik und Prognose zeigen deine Entwicklung.", 3)}
       </ul>
     </div>
     ${renderOnboardingFooter("Weiter")}`,

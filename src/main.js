@@ -10,14 +10,12 @@ import { handleOnboardingInput, handleOnboardingKeydown, maybeStartOnboarding, o
 import { handleImportFile } from "./screens/profile/backup.js";
 import { handlePhotoFile } from "./screens/profile/profile-photo.js";
 import { buildProfileView, handleProfileChange, profileElements } from "./screens/profile/profile-screen.js";
-import { bodyViewer, hideBodyStageHint } from "./screens/stats/body-model-card.js";
-import { buildStatsView, handleStatsChange, statsElements } from "./screens/stats/stats-screen.js";
+import { buildStatsView, handleStatsChange } from "./screens/stats/stats-screen.js";
 import { handleEditorChange, handleEditorKeydown } from "./screens/training/plan-editor.js";
 import { buildTrainingView, handleSwipeEnd, handleSwipeStart, renderTraining } from "./screens/training/training-screen.js";
 import { ICONS } from "./svg/icons.js";
 import { handleScrubOut, handleScrubRelease, scrubChart } from "./ui/charts.js";
 import { handleFormKeydown } from "./ui/forms.js";
-import { darkScheme } from "./ui/preferences.js";
 import { closeSheet, endSheetDrag, moveSheetDrag, startSheetDrag } from "./ui/sheet.js";
 import { showToast } from "./ui/toast.js";
 
@@ -60,9 +58,6 @@ function attachEventListeners() {
   profileView.addEventListener("keydown", handleFormKeydown);
   profileElements.importInput.addEventListener("change", handleImportFile);
   profileElements.photoInput.addEventListener("change", handlePhotoFile);
-  statsElements.bodyCanvas.addEventListener("pointerdown", hideBodyStageHint, { once: true });
-  statsElements.bodyCanvas.addEventListener("keydown", hideBodyStageHint, { once: true });
-  darkScheme.addEventListener("change", () => bodyViewer?.redraw());
   onboardingPage.addEventListener("input", handleOnboardingInput);
   onboardingPage.addEventListener("change", handleOnboardingInput);
   onboardingPage.addEventListener("keydown", handleOnboardingKeydown);

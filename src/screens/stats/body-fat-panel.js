@@ -55,7 +55,7 @@ function renderMissingBodyFat(profile) {
   return `
     <p class="body-fat-label">Körperfett</p>
     <p class="body-fat-title">Noch nicht geschätzt</p>
-    <p class="body-fat-text">${escapeHtml(reason)} Bis dahin zeigt das Modell eine durchschnittliche Statur.</p>
+    <p class="body-fat-text">${escapeHtml(reason)}</p>
     <button class="button-tinted" type="button" data-action="open-profile">Im Profil ergänzen</button>`;
 }
 

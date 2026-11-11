@@ -1,9 +1,8 @@
 import { state } from "../../app/state.js";
-import { describeBmi, estimateBodyFat, healthyWeightRange, waistToHeight } from "../../model/body-metrics.js";
+import { describeBmi, healthyWeightRange, waistToHeight } from "../../model/body-metrics.js";
 import { expenditureEstimate, restingCalories } from "../../model/energy.js";
 import { weightTrend } from "../../model/weight.js";
 import { renderBodyFatPanel } from "./body-fat-panel.js";
-import { describeBodyModel, ensureBodyViewer } from "./body-model-card.js";
 import { statsElements } from "./stats-screen.js";
 import { renderWeightForecastCard } from "./weight-forecast-card.js";
 import { renderWeighInCard, renderWeighInList } from "../weigh-in.js";
@@ -28,11 +27,7 @@ const BODY_EXPLANATION = [
 export function renderBodyPanel() {
   return `
     <div class="stats-panel" id="stats-panel-body" role="tabpanel" aria-labelledby="segment-body" hidden>
-      <section class="group body-model-card" aria-label="Körpermodell">
-        <div class="body-stage" id="body-stage">
-          <canvas class="body-canvas" id="body-canvas" tabindex="0" role="img"></canvas>
-          <p class="body-stage-hint" id="body-stage-hint" aria-hidden="true">Ziehen zum Drehen</p>
-        </div>
+      <section class="group body-fat-card" aria-label="Körperfett">
         <div class="body-fat-panel" id="body-fat-panel"></div>
       </section>
       ${renderTileGrid(BODY_TILES)}
@@ -89,9 +84,6 @@ function renderBodyValuesCard() {
 export function renderBodyStats() {
   const profile = state.profile;
   const trend = weightTrend();
-  const bodyFat = estimateBodyFat(profile);
-  ensureBodyViewer()?.setBody({ bodyFat: bodyFat?.percent ?? null, sex: profile.sex });
-  statsElements.bodyCanvas.setAttribute("aria-label", describeBodyModel(bodyFat));
   setCardHtml(statsElements.bodyFatPanel, renderBodyFatPanel());
   setTileValue("stat-body-weight", profile.bodyWeight, formatOneDecimal);
   setTileValue("stat-weight-trend", trend ? trend.weeklyChange : null, formatSignedNumber);
