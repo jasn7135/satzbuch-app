@@ -1,4 +1,4 @@
-const CACHE_NAME = "satzbuch-2026-11-11-modules";
+const CACHE_NAME = "satzbuch-2026-11-11-exercises";
 const APP_FILES = [
   "./",
   "./assets/icons/apple-touch-icon.png",

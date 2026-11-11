@@ -25,10 +25,10 @@ const STRENGTH_RATIOS = {
 };
 
 const LIFT_TYPES = [
-  { type: "bench", label: "Bankdrücken (Langhantel)", include: /bankdr|bench/, exclude: /schräg|schraeg|negativ|kurzhantel|\bkh\b|incline|decline|dumbbell|maschine|machine|eng/ },
-  { type: "squat", label: "Kniebeuge (Langhantel)", include: /kniebeug|squat/, exclude: /front|goblet|bulgar|hack|split|smith|maschine|einbein/ },
+  { type: "bench", label: "Bankdrücken (Langhantel)", include: /bankdr|bench/, exclude: /schräg|schraeg|negativ|kurzhantel|\bkh\b|incline|decline|dumbbell|maschine|machine|multipresse|eng/ },
+  { type: "squat", label: "Kniebeuge (Langhantel)", include: /kniebeug|squat/, exclude: /front|goblet|bulgar|hack|split|smith|multipresse|maschine|einbein|pendel|belt|zercher|pistol|sissy/ },
   { type: "deadlift", label: "Kreuzheben", include: /kreuzheb|deadlift/, exclude: /rumän|rumaen|romanian|\brdl\b|gestreckt|stiff|einbein|trap|hex/ },
-  { type: "press", label: "Schulterdrücken (Langhantel)", include: /schulterdr|military|overhead|\bohp\b/, exclude: /kurzhantel|\bkh\b|maschine|machine|dumbbell|arnold/ },
+  { type: "press", label: "Schulterdrücken (Langhantel)", include: /schulterdr|military|overhead|\bohp\b/, exclude: /kurzhantel|\bkh\b|maschine|machine|multipresse|dumbbell|arnold/ },
 ];
 
 function bestEstimate(sets) {
