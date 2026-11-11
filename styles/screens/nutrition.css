@@ -1,0 +1,95 @@
+.has-leads .entry-row + .entry-row::before { left: 74px; }
+
+.date-switcher {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  margin-top: 16px;
+  padding: 6px;
+}
+
+.date-switcher-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.15s ease, opacity 0.2s ease;
+}
+
+.date-switcher-button svg { width: 18px; height: 18px; --icon-stroke: 2.6; }
+
+.date-switcher-button:active:not(:disabled) { background: var(--fill); }
+
+.date-switcher-button:disabled { opacity: 0.25; }
+
+.date-switcher-label {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.date-switcher-title { font: var(--type-headline); }
+
+.date-switcher-sub { font: var(--type-footnote); color: var(--label-secondary); }
+
+.nutrition-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: var(--space-stack);
+  padding: var(--space-card);
+}
+
+.macro-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.macro-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 6px 12px;
+}
+
+.macro-label { font: var(--type-subhead); color: var(--label-secondary); }
+
+.macro-value { font: var(--type-number-s); font-variant-numeric: tabular-nums; }
+
+.macro-goal { color: var(--label-secondary); }
+
+.macro-row .progress-bar { grid-column: 1 / -1; }
+
+.food-field {
+  flex: none;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 18px;
+  background: var(--sheet-surface);
+}
+
+.food-field input { font: var(--type-headline); }
+
+#food-suggestions:empty { display: none; }
+
+#food-suggestions .group-label { margin: 8px var(--space-row) 8px; }
+
+.suggestion-add {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.suggestion-add svg { width: 14px; height: 14px; --icon-stroke: 2.6; }

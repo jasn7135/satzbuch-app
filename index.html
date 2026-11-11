@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f2f7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Satzbuch">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/icons/icon-192.png">
+<link rel="stylesheet" href="styles/main.css">
+<title>Satzbuch</title>
+<script type="module" src="src/main.js"></script>
+</head>
+<body>
+<div class="app-shell" id="app-shell">
+  <header class="nav-bar" id="nav-bar">
+    <p class="nav-title" id="nav-title"></p>
+    <div class="nav-actions" id="nav-actions"></div>
+  </header>
+
+  <main>
+    <section class="screen" id="home-screen" data-tab="home" aria-label="Start">
+      <div class="screen-content" id="home-view"></div>
+    </section>
+    <section class="screen" id="training-screen" data-tab="training" aria-label="Training" hidden>
+      <div class="screen-content" id="training-view"></div>
+    </section>
+    <section class="screen" id="nutrition-screen" data-tab="nutrition" aria-label="Ernährung" hidden>
+      <div class="screen-content" id="nutrition-view"></div>
+    </section>
+    <section class="screen" id="stats-screen" data-tab="stats" aria-label="Statistik" hidden>
+      <div class="screen-content" id="stats-view"></div>
+    </section>
+    <section class="screen" id="profile-screen" data-tab="profile" aria-label="Profil" hidden>
+      <div class="screen-content" id="profile-view"></div>
+    </section>
+  </main>
+
+  <nav class="tab-bar" aria-label="Bereiche">
+    <div class="tab-track" id="tab-track"></div>
+  </nav>
+</div>
+
+<div class="sheet-layer" id="sheet-layer" inert>
+  <div class="sheet-scrim" data-action="close-sheet"></div>
+  <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title"></section>
+</div>
+
+<div class="onboarding" id="onboarding" role="dialog" aria-modal="true" aria-label="Einrichtung" hidden>
+  <div class="ob-header">
+    <button class="glass-circle ob-back" id="onboarding-back" type="button" data-action="onboarding-back" aria-label="Zurück" hidden></button>
+    <div class="ob-progress" aria-hidden="true"><span class="ob-progress-fill" id="onboarding-progress"></span></div>
+  </div>
+  <div class="ob-page" id="onboarding-page"></div>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

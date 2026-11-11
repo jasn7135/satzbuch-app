@@ -1,0 +1,115 @@
+.muscle-section { padding: 16px 16px 0; }
+
+.muscle-figures {
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 4px 12px 0;
+}
+
+.mm-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.mm-view { margin: 0; min-width: 0; }
+
+.mm-figure { display: block; width: 100%; height: auto; }
+
+.mm-caption {
+  margin-top: 6px;
+  text-align: center;
+  font: var(--type-caption);
+  color: var(--label-secondary);
+}
+
+.mm-body { fill: var(--figure-body); }
+
+.mm-region {
+  fill: var(--figure-idle);
+  stroke: var(--figure-bg);
+  stroke-width: 0.7;
+  stroke-linejoin: round;
+  transition: fill var(--duration-base) ease;
+}
+
+.mm-region.is-primary,
+.mm-region.is-high { fill: var(--muscle-primary); }
+
+.mm-region.is-secondary { fill: var(--muscle-secondary); }
+
+.mm-region.is-low { fill: var(--muscle-low); }
+
+.mm-region.is-mid { fill: var(--muscle-mid); }
+
+.muscle-legend {
+  position: relative;
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.muscle-legend-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 12px auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 0;
+  font: var(--type-subhead);
+}
+
+.muscle-legend-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -16px;
+  height: 1px;
+  background: var(--separator);
+  transform: scaleY(0.5);
+  transform-origin: top;
+}
+
+.muscle-legend-value { text-align: right; color: var(--label-secondary); overflow-wrap: anywhere; }
+
+.muscle-legend-row .muscle-swatch { align-self: center; }
+
+.muscle-section > .card-message { padding: 14px 0 16px; text-align: center; }
+
+.muscle-swatch {
+  display: inline-block;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+}
+
+.muscle-swatch.is-primary,
+.muscle-swatch.is-high { background: var(--muscle-primary); }
+
+.muscle-swatch.is-secondary { background: var(--muscle-secondary); }
+
+.muscle-swatch.is-low { background: var(--muscle-low); }
+
+.muscle-swatch.is-mid { background: var(--muscle-mid); }
+
+.level-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 16px;
+  margin: 14px 0 16px;
+  padding: 0;
+  font: var(--type-footnote);
+  color: var(--label-secondary);
+}
+
+.level-legend-item { display: flex; align-items: center; gap: 6px; }
+
+.muscle-section > .card-footnote { margin: 0 -16px; }
+
+.muscle-chip.is-primary { background: var(--muscle-primary); color: #ffffff; }
+
+.muscle-chip.is-secondary { background: var(--muscle-secondary); color: var(--label); }

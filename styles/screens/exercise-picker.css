@@ -1,0 +1,99 @@
+.picker-toolbar {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 2px;
+  padding-bottom: 10px;
+  padding-left: var(--gutter-left);
+  padding-right: var(--gutter-right);
+}
+
+.picker-body { padding-top: 0; }
+
+.picker-section {
+  margin: 14px 4px 0;
+  font: var(--type-subhead-strong);
+  color: var(--label-secondary);
+}
+
+.picker-section:first-child { margin-top: 2px; }
+
+.picker-list { display: flex; flex-direction: column; }
+
+.picker-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: background-color var(--duration-quick) ease;
+}
+
+.picker-row + .picker-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 104px;
+  height: 1px;
+  background: var(--separator);
+  transform: scaleY(0.5);
+  transform-origin: top;
+}
+
+.picker-select {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 72px;
+  padding: 6px 0 6px 14px;
+  text-align: left;
+}
+
+.picker-row:has(> .picker-select:active:not(:disabled)) { background: var(--fill); }
+
+.picker-select:disabled .exercise-name { color: var(--label-secondary); }
+
+.picker-select .check-circle { width: 24px; height: 24px; }
+
+.picker-select .check-circle svg { width: 14px; height: 14px; transition: opacity var(--duration-quick) ease; }
+
+.picker-thumb {
+  flex: none;
+  width: 30px;
+  height: 60px;
+}
+
+.picker-thumb .mm-figure { width: 30px; height: 60px; }
+
+.picker-thumb .mm-region { stroke-width: 1.6; }
+
+.picker-info {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  color: var(--label-secondary);
+  border-radius: 50%;
+  transition: color var(--duration-quick) ease, background-color var(--duration-quick) ease;
+}
+
+.picker-info svg { width: 22px; height: 22px; --icon-stroke: 1.6; }
+
+.picker-info:active { background: var(--fill); color: var(--label); }
+
+.picker-empty {
+  margin: 0;
+  padding: 24px 16px 8px;
+  text-align: center;
+  font: var(--type-subhead);
+  color: var(--label-secondary);
+}
+
+.picker-create {
+  display: flex;
+  margin-top: 6px;
+  padding: 0 16px 0 8px;
+}

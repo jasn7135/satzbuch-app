@@ -1,0 +1,11 @@
+@media (hover: hover) and (pointer: fine) {
+  .exercise-row:hover,
+  .entry-row:hover,
+  .action-row:hover:not(:disabled),
+  .row-button:hover,
+  .sets-actions button:hover { background: var(--fill); }
+  .picker-info:hover { color: var(--label); }
+  .picker-row:has(> .picker-select:hover:not(:disabled)) { background: var(--fill); }
+  .tab:hover { color: var(--label); }
+  .chip:hover:not(.is-selected) { background: var(--fill-pressed); }
+}

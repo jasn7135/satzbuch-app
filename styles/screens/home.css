@@ -1,0 +1,97 @@
+.home-hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 6px;
+}
+
+.time-symbol {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 12px;
+  color: var(--label);
+}
+
+.time-symbol svg { width: 34px; height: 34px; }
+
+.time-symbol.symbol-in { animation: symbol-in 0.6s var(--ease-out); }
+
+.home-greeting {
+  margin: 0;
+  font: var(--type-display);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.greeting-word {
+  display: inline-block;
+  animation: word-in 0.6s var(--ease-out) both;
+  animation-delay: calc(0.05s + var(--order) * 0.06s);
+}
+
+.week-cells {
+  list-style: none;
+  margin: 0;
+  padding: 16px 10px 8px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.week-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: feature-in 0.5s var(--spring) both;
+  animation-delay: calc(var(--order) * 0.04s);
+}
+
+.week-cell-label { font: var(--type-footnote); color: var(--label-secondary); }
+
+.week-cell.is-today .week-cell-label { color: var(--label); font-weight: 600; }
+
+.week-cell-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--on-accent);
+}
+
+.week-cell-mark svg { width: 14px; height: 14px; }
+
+.week-cell.is-done .week-cell-mark { background: var(--accent); }
+
+.week-cell.is-planned .week-cell-mark { box-shadow: inset 0 0 0 1.5px var(--label-tertiary); }
+
+.week-cell.is-planned.is-today .week-cell-mark { box-shadow: inset 0 0 0 2px var(--label); }
+
+.week-cell.is-rest .week-cell-mark::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--label-tertiary);
+}
+
+.week-caption {
+  margin: 0;
+  padding: 4px 16px 16px;
+  text-align: center;
+  font: var(--type-subhead);
+  color: var(--label-secondary);
+}
+
+.home-facts,
+.home-hint { margin-top: var(--space-section); }
+
+.home-hint .forecast-hint { padding: var(--space-card); }

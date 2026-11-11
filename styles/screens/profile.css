@@ -1,0 +1,23 @@
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+  padding: var(--space-card);
+}
+
+.profile-text { min-width: 0; }
+
+.profile-name {
+  margin: 0;
+  font: var(--type-title2);
+  overflow-wrap: anywhere;
+}
+
+.profile-sub {
+  margin: 2px 0 0;
+  font: var(--type-subhead);
+  color: var(--label-secondary);
+}
+
+.danger-group { margin-top: 24px; }
