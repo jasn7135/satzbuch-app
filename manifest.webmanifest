@@ -1,6 +1,6 @@
 {
-  "name": "Satzbuch",
-  "short_name": "Satzbuch",
+  "name": "Formline",
+  "short_name": "Formline",
   "description": "Trainingstagebuch mit Ernährung und Statistik.",
   "lang": "de",
   "start_url": "./",

@@ -78,7 +78,7 @@ const ONBOARDING_TEMPLATES = {
     <div class="ob-body">
       <div class="app-glyph" aria-hidden="true">${ICONS.training}</div>
       <p class="ob-greeting">${greeting(new Date())}.</p>
-      <h1 class="ob-title">Willkommen bei Satzbuch</h1>
+      <h1 class="ob-title">Willkommen bei Formline</h1>
       <ul class="feature-list">
         ${renderFeature(ICONS.calendar, "Plan für jeden Wochentag", "Übungen wählst du aus einer Liste, samt Muskelkarte.", 0)}
         ${renderFeature(ICONS.repeat, "Werte vom letzten Mal", "Gewicht und Wiederholungen sind vorausgefüllt. Du änderst nur, was anders ist.", 1)}
@@ -112,7 +112,7 @@ const ONBOARDING_TEMPLATES = {
   body: () => `
     <div class="ob-body">
       <h1 class="ob-title">Ein paar Eckdaten</h1>
-      <p class="ob-text">Damit schätzt Satzbuch deine Entwicklung und deinen Kalorienbedarf realistisch ein. Alles ist freiwillig und im Profil änderbar.</p>
+      <p class="ob-text">Damit schätzt Formline deine Entwicklung und deinen Kalorienbedarf realistisch ein. Alles ist freiwillig und im Profil änderbar.</p>
       <div class="group">${renderWeightInput("onboarding", "data-onboarding-field", state.onboarding.bodyWeight)}${renderBodyFields("onboarding", "data-onboarding-field", state.onboarding)}</div>
     </div>
     ${renderOnboardingFooter("Weiter", { secondary: '<button class="button-plain" type="button" data-action="onboarding-skip">Später eintragen</button>' })}`,

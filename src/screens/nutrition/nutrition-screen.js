@@ -159,7 +159,7 @@ function describeGuidanceNotes(recommendation) {
 function renderNutritionGuidance() {
   const recommendation = nutritionRecommendation();
   if (!recommendation) {
-    return '<p class="note">Mit Gewicht, Größe und Geburtsdatum im Profil schlägt dir Satzbuch passende Tagesziele vor.</p>';
+    return '<p class="note">Mit Gewicht, Größe und Geburtsdatum im Profil schlägt dir Formline passende Tagesziele vor.</p>';
   }
   return `
     <h2 class="section-title">Empfehlung</h2>

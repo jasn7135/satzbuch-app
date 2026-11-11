@@ -84,7 +84,7 @@ export function buildProfileView() {
       </button>
       ${renderBodyFields("profile", "data-profile-field", state.profile)}
     </div>
-    <p class="note">Alltag meint deinen Tag ohne Training, die Trainings rechnet Satzbuch selbst dazu. Gewicht trägst du am besten einmal pro Woche ein.</p>
+    <p class="note">Alltag meint deinen Tag ohne Training, die Trainings rechnet Formline selbst dazu. Gewicht trägst du am besten einmal pro Woche ein.</p>
     <p class="group-label">Körpermaße</p>
     <div class="group">${renderMeasurementFields()}</div>
     <p class="note">Freiwillig, für eine genauere Körperfett-Schätzung. Taille auf Höhe des Bauchnabels messen, Hals direkt unter dem Kehlkopf, Hüfte an der breitesten Stelle.</p>
@@ -198,11 +198,11 @@ function describeGoalNote() {
   const { goal } = state.profile;
   if (goal.type === "lose" || goal.type === "gain") {
     const change = plannedWeeklyChange(state.profile);
-    const pace = change === 0 ? "Zielgewicht erreicht, Satzbuch empfiehlt jetzt Kalorien zum Halten." : `Geplant sind ${formatWeeklyChange(change)}.`;
+    const pace = change === 0 ? "Zielgewicht erreicht, Formline empfiehlt jetzt Kalorien zum Halten." : `Geplant sind ${formatWeeklyChange(change)}.`;
     return `${pace} Das Zielgewicht ist freiwillig und erscheint in der Gewichtsprognose. Empfohlene Tagesziele findest du unter Ernährung.`;
   }
-  if (goal.type === "maintain") return "Satzbuch empfiehlt Kalorien, mit denen dein Gewicht stabil bleibt.";
-  return "Mit einem Ziel passt Satzbuch Kalorienempfehlung und Prognosen daran an.";
+  if (goal.type === "maintain") return "Formline empfiehlt Kalorien, mit denen dein Gewicht stabil bleibt.";
+  return "Mit einem Ziel passt Formline Kalorienempfehlung und Prognosen daran an.";
 }
 
 function syncProfileGoalInputs() {

@@ -12,13 +12,14 @@ import { parseIsoDate, todayIso, toIsoDate, WEEKDAYS } from "../../utils/dates.j
 import { countLabel, csvDateFormat, formatInteger, formatNumber, fullDateFormat } from "../../utils/format.js";
 import { escapeHtml } from "../../utils/text.js";
 
+const BACKUP_APP_NAMES = ["Formline", "Satzbuch"];
 const EXPORT_FORMAT_VERSION = 1;
 const MAX_IMPORT_BYTES = 5 * 1024 * 1024;
 const MAX_IMPORT_SESSIONS = 1000;
 
 export function buildJsonExport() {
   const content = {
-    app: "Satzbuch",
+    app: BACKUP_APP_NAMES[0],
     format: EXPORT_FORMAT_VERSION,
     exportedAt: new Date().toISOString(),
     profile: state.profile,
@@ -27,7 +28,7 @@ export function buildJsonExport() {
     sessions: state.sessions,
     nutrition: state.nutrition,
   };
-  return { filename: `satzbuch-sicherung-${toIsoDate(new Date())}.json`, data: JSON.stringify(content, null, 2) };
+  return { filename: `formline-sicherung-${toIsoDate(new Date())}.json`, data: JSON.stringify(content, null, 2) };
 }
 
 function toCsvField(value) {
@@ -52,7 +53,7 @@ export function buildCsvExport() {
     )
   );
   const lines = [header, ...rows].map((row) => row.map(toCsvField).join(";"));
-  return { filename: `satzbuch-saetze-${toIsoDate(new Date())}.csv`, data: `\uFEFF${lines.join("\r\n")}` };
+  return { filename: `formline-saetze-${toIsoDate(new Date())}.csv`, data: `\uFEFF${lines.join("\r\n")}` };
 }
 
 function describeDownloadError(error) {
@@ -103,10 +104,10 @@ function parseBackup(text) {
   try {
     content = JSON.parse(text);
   } catch {
-    return { error: "Die Datei ist keine gültige Sicherung. Wähle eine JSON-Datei, die Satzbuch erstellt hat." };
+    return { error: "Die Datei ist keine gültige Sicherung. Wähle eine JSON-Datei, die Formline erstellt hat." };
   }
-  if (content?.app !== "Satzbuch" || content.format !== EXPORT_FORMAT_VERSION || !Array.isArray(content.sessions)) {
-    return { error: "Die Datei ist keine Satzbuch-Sicherung. Wähle eine Datei, die du unter „Als Datei sichern“ erstellt hast." };
+  if (!BACKUP_APP_NAMES.includes(content?.app) || content.format !== EXPORT_FORMAT_VERSION || !Array.isArray(content.sessions)) {
+    return { error: "Die Datei ist keine Formline-Sicherung. Wähle eine Datei, die du unter „Als Datei sichern“ erstellt hast." };
   }
   if (content.sessions.length > MAX_IMPORT_SESSIONS) {
     return { error: `Die Sicherung enthält mehr als ${formatInteger(MAX_IMPORT_SESSIONS)} Trainings und kann nicht geladen werden.` };
@@ -193,7 +194,7 @@ export function openResetSheet() {
   state.pendingReplacement = { data: createEmptyData(), successMessage: "Alle Daten gelöscht" };
   renderReplaceSheet({
     title: "Alle Daten löschen",
-    context: "Satzbuch startet danach wie beim ersten Öffnen.",
+    context: "Formline startet danach wie beim ersten Öffnen.",
     summaries: [renderDataSummary("Wird gelöscht", state)],
     warning: "Plan, eigene Übungen, Profil mit Gewichtsverlauf, Trainings und Ernährung werden gelöscht. Das lässt sich nicht rückgängig machen.",
     confirmLabel: "Alles löschen",

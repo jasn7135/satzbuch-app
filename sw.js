@@ -1,4 +1,4 @@
-const CACHE_NAME = "satzbuch-2026-11-11-no-3d";
+const CACHE_NAME = "formline-2026-11-11";
 const APP_FILES = [
   "./",
   "./assets/icons/apple-touch-icon.png",

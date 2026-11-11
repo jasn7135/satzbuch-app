@@ -51,7 +51,7 @@ function renderNutritionEntrySheet(entry) {
           <input class="form-input" id="entry-time" type="time" value="${escapeHtml(values.time)}">
         </label>
       </div>
-      <p class="note">Wählst du einen Vorschlag, rechnet Satzbuch Kalorien und Makros passend zur Menge. Die Nährwerte der Liste sind Durchschnittswerte, genauer ist die Packungsangabe. Lässt du Kalorien leer, werden sie aus den Makros berechnet.</p>
+      <p class="note">Wählst du einen Vorschlag, rechnet Formline Kalorien und Makros passend zur Menge. Die Nährwerte der Liste sind Durchschnittswerte, genauer ist die Packungsangabe. Lässt du Kalorien leer, werden sie aus den Makros berechnet.</p>
       <div class="sheet-actions">${deleteButton}</div>
     </div>`;
 }
