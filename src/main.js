@@ -1,4 +1,5 @@
 import { handleClick } from "./app/actions.js";
+import { keepDocumentAtOrigin } from "./app/document-scroll.js";
 import { nutritionView, profileView, screens, sheet, sheetLayer, statsView, trainingScreen, trainingView } from "./app/dom.js";
 import { buildTabBar, render, renderTab, updateCompactNav, updateNav, updateTabBar } from "./app/navigation.js";
 import { requestPersistentStorage, storageProblem } from "./app/persistence.js";
@@ -72,6 +73,7 @@ function attachEventListeners() {
 }
 
 function startApp() {
+  keepDocumentAtOrigin();
   buildViews();
   attachEventListeners();
   updateTabBar();

@@ -12,6 +12,7 @@
   color: var(--on-accent);
   box-shadow: var(--glass-shadow);
   transform: translateX(-50%);
+  pointer-events: none;
   animation: toast-in 0.4s var(--spring);
 }
 

@@ -12,7 +12,10 @@
   animation: fade-in 0.35s ease;
 }
 
-.onboarding.is-leaving { animation: onboarding-out 0.5s var(--spring) forwards; }
+.onboarding.is-leaving {
+  pointer-events: none;
+  animation: onboarding-out 0.5s var(--spring) forwards;
+}
 
 .ob-header {
   flex: none;

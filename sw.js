@@ -1,4 +1,4 @@
-const CACHE_NAME = "formline-2026-11-11";
+const CACHE_NAME = "formline-1.0.1";
 const APP_FILES = [
   "./",
   "./assets/icons/apple-touch-icon.png",
@@ -7,6 +7,7 @@ const APP_FILES = [
   "./index.html",
   "./manifest.webmanifest",
   "./src/app/actions.js",
+  "./src/app/document-scroll.js",
   "./src/app/dom.js",
   "./src/app/navigation.js",
   "./src/app/persistence.js",
@@ -14,6 +15,7 @@ const APP_FILES = [
   "./src/app/state.js",
   "./src/config/limits.js",
   "./src/config/options.js",
+  "./src/config/version.js",
   "./src/data/exercises.js",
   "./src/data/foods.js",
   "./src/main.js",
@@ -102,7 +104,7 @@ const APP_FILES = [
 ];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES)).then(() => self.skipWaiting()));
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES.map((url) => new Request(url, { cache: "reload" })))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", (event) => {

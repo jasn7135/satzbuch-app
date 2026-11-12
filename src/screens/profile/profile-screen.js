@@ -2,6 +2,7 @@ import { profileView } from "../../app/dom.js";
 import { saveState, state } from "../../app/state.js";
 import { EARLIEST_BIRTH_DATE, NAME_MAX_LENGTH } from "../../config/limits.js";
 import { ACTIVITY_OPTIONS, EXPERIENCE_OPTIONS, GOAL_OPTIONS, isOptionValue, MEASUREMENT_FIELDS, PACE_OPTIONS, SEX_OPTIONS } from "../../config/options.js";
+import { APP_VERSION } from "../../config/version.js";
 import { plannedWeeklyChange } from "../../model/energy.js";
 import { parseHeight, parseMeasurement, parseTargetWeight } from "../../model/profile-input.js";
 import { ageOn, isBirthday, isValidBirthDate, normalizeProfile } from "../../model/profile.js";
@@ -117,6 +118,7 @@ export function buildProfileView() {
         <span class="chevron" aria-hidden="true">${ICONS.chevron}</span>
       </button>
     </div>
+    <p class="note app-version">Formline ${APP_VERSION}</p>
     <input class="visually-hidden" id="import-input" type="file" accept="application/json,.json" tabindex="-1" aria-hidden="true">`;
   Object.assign(profileElements, {
     avatar: document.getElementById("profile-avatar"),
