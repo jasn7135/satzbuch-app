@@ -4,7 +4,7 @@ import { showToast } from "../ui/toast.js";
 import { todayWeekday, toIsoDate } from "../utils/dates.js";
 
 export function storedData() {
-  return { plan: state.plan, customExercises: state.customExercises, profile: state.profile, sessions: state.sessions, nutrition: state.nutrition };
+  return { plan: state.plan, customExercises: state.customExercises, profile: state.profile, sessions: state.sessions, nutrition: state.nutrition, mealPlan: state.mealPlan, customFoods: state.customFoods };
 }
 
 function describeStorageError(error) {
@@ -34,6 +34,8 @@ export const state = {
   completedExerciseId: null,
   completedUntil: 0,
   nutritionDraft: null,
+  mealPlanView: null,
+  customFoodDraft: null,
   weighInDraft: null,
   picker: null,
   onboarding: null,
@@ -48,5 +50,7 @@ export function applyAppData(data) {
     profile: data.profile,
     sessions: data.sessions,
     nutrition: data.nutrition,
+    mealPlan: data.mealPlan,
+    customFoods: data.customFoods,
   });
 }

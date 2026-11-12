@@ -25,6 +25,8 @@ export function closeSheet() {
   appShell.inert = false;
   state.openExerciseId = null;
   state.nutritionDraft = null;
+  state.mealPlanView = null;
+  state.customFoodDraft = null;
   state.weighInDraft = null;
   state.pendingReplacement = null;
   state.picker = null;

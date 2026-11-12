@@ -33,6 +33,13 @@ export function isValidEntryGrams(grams) {
   return Number.isInteger(grams) && grams >= 1 && grams <= MAX_ENTRY_GRAMS;
 }
 
+export function normalizeMacros(rawValues) {
+  return Object.fromEntries(MACROS.map((macro) => {
+    const grams = rawValues?.[macro.key];
+    return [macro.key, isValidMacroGrams(grams) ? Math.round(grams * 10) / 10 : 0];
+  }));
+}
+
 export function normalizeNutritionEntry(rawEntry) {
   if (!SAFE_ID_PATTERN.test(rawEntry?.id) || !isIsoDate(rawEntry.date) || !isValidClockTime(rawEntry.time)) return null;
   if (!isValidEntryCalories(rawEntry.kcal)) return null;
@@ -43,11 +50,9 @@ export function normalizeNutritionEntry(rawEntry) {
     name: typeof rawEntry.name === "string" ? sanitizeName(rawEntry.name, FOOD_NAME_MAX_LENGTH) : "",
     grams: isValidEntryGrams(rawEntry.grams) ? rawEntry.grams : null,
     kcal: rawEntry.kcal,
+    ...normalizeMacros(rawEntry),
   };
-  for (const macro of MACROS) {
-    const grams = rawEntry[macro.key];
-    entry[macro.key] = isValidMacroGrams(grams) ? Math.round(grams * 10) / 10 : 0;
-  }
+  if (SAFE_ID_PATTERN.test(rawEntry.planItemId)) entry.planItemId = rawEntry.planItemId;
   return entry;
 }
 

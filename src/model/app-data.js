@@ -1,4 +1,6 @@
 import { normalizeCustomExercises } from "./custom-exercises.js";
+import { normalizeCustomFoods } from "./custom-foods.js";
+import { createEmptyMealPlan, normalizeMealPlan } from "./meal-plan.js";
 import { createEmptyNutrition, normalizeNutrition } from "./nutrition.js";
 import { createEmptyPlan, normalizePlan } from "./plan.js";
 import { normalizeProfile } from "./profile.js";
@@ -12,9 +14,11 @@ export function normalizeAppData(raw) {
     profile: normalizeProfile(raw?.profile),
     sessions: normalizeSessions(Array.isArray(raw?.sessions) ? raw.sessions : []),
     nutrition: normalizeNutrition(raw?.nutrition),
+    mealPlan: normalizeMealPlan(raw?.mealPlan),
+    customFoods: normalizeCustomFoods(raw?.customFoods),
   };
 }
 
 export function createEmptyData() {
-  return { plan: createEmptyPlan(), customExercises: [], profile: normalizeProfile(null), sessions: [], nutrition: createEmptyNutrition() };
+  return { plan: createEmptyPlan(), customExercises: [], profile: normalizeProfile(null), sessions: [], nutrition: createEmptyNutrition(), mealPlan: createEmptyMealPlan(), customFoods: [] };
 }

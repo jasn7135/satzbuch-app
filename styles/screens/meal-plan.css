@@ -1,0 +1,60 @@
+.food-library-link { margin-top: var(--space-stack); }
+
+.entry-row.plan-row:active,
+.entry-row.plan-row:hover { background: none; }
+
+.plan-row.is-logged .entry-title { color: var(--label-secondary); }
+
+.plan-log-button {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent-soft);
+  color: var(--accent);
+  transition: transform var(--duration-base) var(--spring), background-color var(--duration-quick) ease;
+}
+
+.plan-log-button svg { width: 14px; height: 14px; --icon-stroke: 2.6; }
+.plan-log-button:active { transform: scale(0.88); }
+.plan-log-button.is-logged { background: var(--accent); color: var(--on-accent); }
+
+.add-row {
+  position: relative;
+  display: flex;
+  padding: 0 16px 0 8px;
+}
+
+.entry-row + .add-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: var(--space-row);
+  height: 1px;
+  background: var(--separator);
+  transform: scaleY(0.5);
+  transform-origin: top;
+}
+
+.add-row-group {
+  display: flex;
+  padding: 0 16px 0 8px;
+}
+
+.group + .add-row-group { margin-top: 10px; }
+
+.meal-plan-days {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.meal-plan-days .chip {
+  flex: 1 0 auto;
+  min-width: 40px;
+  padding: 0 10px;
+}

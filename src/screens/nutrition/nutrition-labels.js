@@ -8,7 +8,7 @@ export function describeCalorieBalance(kcal, goal) {
   return `${formatInteger(-difference)} kcal über dem Ziel`;
 }
 
-function describeEntryMacros(entry) {
+export function describeEntryMacros(entry) {
   const parts = MACROS.filter((macro) => entry[macro.key] > 0).map((macro) => `${macro.shortLabel}\u00a0${formatNumber(entry[macro.key])}\u00a0g`);
   return parts.length ? parts.join(" · ") : "Ohne Makros";
 }

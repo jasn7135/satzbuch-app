@@ -1,6 +1,9 @@
 import { selectTab } from "./navigation.js";
 import { state } from "./state.js";
-import { addNutritionEntryForToday, deleteNutritionEntry, openNutritionEntry, pickFood, saveNutritionEntry } from "../screens/nutrition/food-entry-sheet.js";
+import { deleteCustomFood, leaveCustomFoodForm, openCustomFoodForm, openCustomFoods, saveCustomFood } from "../screens/nutrition/custom-food-sheet.js";
+import { addNutritionEntryForToday, createCustomFoodFromEntry, deleteNutritionEntry, openNutritionEntry, pickFood, saveNutritionEntry } from "../screens/nutrition/food-entry-sheet.js";
+import { logAllPlannedItems, logPlannedItem } from "../screens/nutrition/meal-plan-card.js";
+import { addPlannedItem, backToMealPlan, copyMealPlanDayToAll, editPlannedItem, openMealPlan, selectMealPlanDay } from "../screens/nutrition/meal-plan-sheet.js";
 import { applyNutritionGuidance, shiftNutritionDate } from "../screens/nutrition/nutrition-screen.js";
 import { advanceOnboarding, chooseOnboardingPlan, goToOnboardingStep, skipOnboardingStep } from "../screens/onboarding.js";
 import { buildCsvExport, buildJsonExport, chooseImportFile, confirmReplacement, exportFile, openResetSheet } from "../screens/profile/backup.js";
@@ -51,6 +54,21 @@ const CLICK_ACTIONS = {
   "save-nutrition-entry": () => saveNutritionEntry(),
   "delete-nutrition-entry": (element) => deleteNutritionEntry(element),
   "apply-nutrition-guidance": () => applyNutritionGuidance(),
+  "open-meal-plan": () => openMealPlan(),
+  "select-meal-plan-day": (element) => selectMealPlanDay(Number(element.dataset.day)),
+  "add-meal-plan-item": (element) => addPlannedItem(element.dataset.meal),
+  "edit-meal-plan-item": (element) => editPlannedItem(element.dataset.id),
+  "back-to-meal-plan": () => backToMealPlan(),
+  "copy-meal-plan-day": (element) => copyMealPlanDayToAll(element),
+  "log-meal-plan-item": (element) => logPlannedItem(element.dataset.id),
+  "log-all-meal-plan-items": () => logAllPlannedItems(),
+  "open-custom-foods": () => openCustomFoods(),
+  "new-custom-food": () => openCustomFoodForm({ returnTo: "list" }),
+  "edit-custom-food": (element) => openCustomFoodForm({ foodId: element.dataset.id, returnTo: "list" }),
+  "create-custom-food-from-entry": () => createCustomFoodFromEntry(),
+  "save-custom-food": () => saveCustomFood(),
+  "delete-custom-food": (element) => deleteCustomFood(element),
+  "custom-food-back": () => leaveCustomFoodForm(),
   "open-weigh-in": () => openWeighIn(),
   "edit-weigh-in": (element) => openWeighIn(element.dataset.date),
   "save-weigh-in": () => saveWeighIn(),

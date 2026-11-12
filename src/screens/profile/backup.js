@@ -27,6 +27,8 @@ export function buildJsonExport() {
     customExercises: state.customExercises,
     sessions: state.sessions,
     nutrition: state.nutrition,
+    mealPlan: state.mealPlan,
+    customFoods: state.customFoods,
   };
   return { filename: `formline-sicherung-${toIsoDate(new Date())}.json`, data: JSON.stringify(content, null, 2) };
 }
@@ -159,6 +161,8 @@ function renderDataSummary(label, data) {
       ${renderInfoRow("Name", data.profile.name || "Nicht angegeben")}
       ${renderInfoRow("Trainingsplan", describePlanSize(data.plan))}
       ${renderInfoRow("Eigene Übungen", formatInteger(data.customExercises.length))}
+      ${renderInfoRow("Essensplan", countLabel(data.mealPlan.days.flat().length, "geplantes Essen", "geplante Essen"))}
+      ${renderInfoRow("Eigene Lebensmittel", formatInteger(data.customFoods.length))}
       ${renderInfoRow("Trainings", formatInteger(data.sessions.length))}
       ${renderInfoRow("Ernährung", countLabel(data.nutrition.entries.length, "Eintrag", "Einträge"))}
     </div>`;

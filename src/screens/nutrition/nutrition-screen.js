@@ -6,13 +6,14 @@ import { describeExpenditureSource, nutritionRecommendation } from "../../model/
 import { nutritionEntriesOn } from "../../model/nutrition-log.js";
 import { compareEntriesByTime, isValidCalorieGoal, isValidProteinGoal, totalsOf } from "../../model/nutrition.js";
 import { renderHome } from "../home.js";
+import { renderMealPlanCard } from "./meal-plan-card.js";
 import { describeCalorieBalance, describeEntryDetails, mealLabel } from "./nutrition-labels.js";
 import { ICONS } from "../../svg/icons.js";
 import { playAnimation } from "../../ui/animation.js";
 import { renderCardMessage, renderInfoRow, renderMiniRing, renderProgressBar, setCardHtml } from "../../ui/components.js";
 import { showToast } from "../../ui/toast.js";
 import { addDays, parseIsoDate, todayIso, toIsoDate } from "../../utils/dates.js";
-import { describeRelativeDay, formatInteger, formatNumber, formatWeeklyChange, fullDateFormat } from "../../utils/format.js";
+import { countLabel, describeRelativeDay, formatInteger, formatNumber, formatWeeklyChange, fullDateFormat } from "../../utils/format.js";
 import { parseWholeNumber, roundToStep } from "../../utils/numbers.js";
 import { escapeHtml } from "../../utils/text.js";
 
@@ -42,6 +43,15 @@ export function buildNutritionView() {
     <section class="group nutrition-summary" id="nutrition-summary" aria-label="Tagesübersicht"></section>
     <h2 class="section-title">Einträge</h2>
     <section class="group has-leads" id="nutrition-entries" aria-label="Einträge"></section>
+    <h2 class="section-title">Essensplan</h2>
+    <section class="group has-leads" id="meal-plan-card" aria-label="Essensplan"></section>
+    <div class="group food-library-link">
+      <button class="action-row" type="button" data-action="open-custom-foods">
+        <span class="action-icon" aria-hidden="true">${ICONS.nutrition}</span>
+        <span class="action-text"><span class="action-title">Eigene Lebensmittel</span><span class="action-sub" id="custom-food-count"></span></span>
+        <span class="chevron" aria-hidden="true">${ICONS.chevron}</span>
+      </button>
+    </div>
     <h2 class="section-title">Tagesziele</h2>
     <div class="group">
       <label class="form-row" for="goal-kcal">
@@ -67,6 +77,8 @@ export function buildNutritionView() {
     dayDate: document.getElementById("nutrition-day-date"),
     summary: document.getElementById("nutrition-summary"),
     entries: document.getElementById("nutrition-entries"),
+    mealPlan: document.getElementById("meal-plan-card"),
+    customFoodCount: document.getElementById("custom-food-count"),
     goalInputs: [...nutritionView.querySelectorAll("[data-goal-field]")],
     guidance: document.getElementById("nutrition-guidance"),
   });
@@ -185,11 +197,18 @@ function updateDateSwitcher() {
   nutritionElements.previousDay.disabled = state.nutritionDate <= earliestNutritionDate();
 }
 
+function describeCustomFoodCount() {
+  const count = state.customFoods.length;
+  return count === 0 ? "Produkte mit Nährwerten von der Packung" : countLabel(count, "Lebensmittel gespeichert", "Lebensmittel gespeichert");
+}
+
 export function renderNutrition() {
   const entries = nutritionEntriesOn(state.nutritionDate);
   updateDateSwitcher();
   setCardHtml(nutritionElements.summary, renderNutritionSummary(totalsOf(entries)));
   setCardHtml(nutritionElements.entries, renderNutritionEntries(entries));
+  setCardHtml(nutritionElements.mealPlan, renderMealPlanCard(state.nutritionDate));
+  nutritionElements.customFoodCount.textContent = describeCustomFoodCount();
   syncNutritionGoalInputs();
   setCardHtml(nutritionElements.guidance, renderNutritionGuidance());
 }
