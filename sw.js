@@ -1,4 +1,4 @@
-const CACHE_NAME = "formline-1.0.1";
+const CACHE_NAME = "formline-1.1.0";
 const APP_FILES = [
   "./",
   "./assets/icons/apple-touch-icon.png",
